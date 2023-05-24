@@ -26,3 +26,25 @@ function operate(a, b, operator) {
         return divide(a, b);
     }
 }
+
+function calcDisplay() {
+  let btn = document.querySelectorAll('.num');
+  btn.forEach((number) => number.addEventListener('click', function() {
+    displayValue.push(this.textContent)
+    display.textContent = displayValue.join('')
+  }))
+  reset()
+}
+
+function reset() {
+  let reset = document.querySelector('#reset')
+  reset.addEventListener('click', function() {
+    displayValue = [];
+    display.textContent = 0
+  })
+
+}
+
+let displayValue = [];
+let display = document.querySelector('.display');
+calcDisplay()
