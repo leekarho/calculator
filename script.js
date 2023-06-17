@@ -59,7 +59,8 @@ function reset() {
 function operator() {
   let operator = document.querySelectorAll('.operator')
   operator.forEach((op) => op.addEventListener('click', function() {
-    a = parseFloat(displayValue);
+    a = parseFloat(displayValue.join(''));
+    console.log(a);
     displayValue = [];
     mathSign = this.textContent;
   }))
@@ -68,7 +69,9 @@ function operator() {
 function equals() {
   let equal = document.querySelector('.equal')
   equal.addEventListener('click', function() {
-    b = parseFloat(displayValue);
+    b = parseFloat(displayValue.join(''));
+    console.log(mathSign);
+    console.log(b)
     let ans = operate(a, b, mathSign)
     display.textContent = ans
   })
