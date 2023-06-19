@@ -41,12 +41,13 @@ function operate(a, b, operator) {
 function calcDisplay() {
   let btn = document.querySelectorAll('.num');
   btn.forEach((number) => number.addEventListener('click', function() {
-    displayValue.push(this.textContent)
-    display.textContent = displayValue.join('')
-  }))
-  reset()
-  operator()
-  equals()
+    displayValue = [];
+    displayValue.push(this.textContent);
+    display.textContent = displayValue.join('');
+  }));
+  reset();
+  operator();
+  equals();
 }
 
 function reset() {
@@ -65,12 +66,10 @@ function operator() {
   operator.forEach((op) => op.addEventListener('click', function() {
     if (a == undefined) {
       a = parseFloat(displayValue.join(''));
-      console.log(`a:  ${a}`);
       displayValue = [];
       mathSign = this.textContent;
     } else {
       b = parseFloat(displayValue.join(''));
-      console.log(`b: ${b}`)
       displayValue = [];
       result = operate(a, b, mathSign);
       display.textContent = result;
@@ -83,9 +82,13 @@ function operator() {
 function equals() {
   let equal = document.querySelector('.equal')
   equal.addEventListener('click', function() {
-    b = parseFloat(displayValue.join(''));
-    result = operate(a, b, mathSign)
-    display.textContent = result
+    if (a == undefined) {
+      display.textContent = displayValue.join('')
+    } else {
+      b = parseFloat(displayValue.join(''));
+      result = operate(a, b, mathSign)
+      display.textContent = result
+    }
   })
 }
 
