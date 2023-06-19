@@ -1,5 +1,6 @@
 let a;
 let b;
+let result = 0;
 let mathSign = '';
 let displayValue = [];
 let display = document.querySelector('.display');
@@ -52,17 +53,30 @@ function reset() {
   let reset = document.querySelector('#reset')
   reset.addEventListener('click', function() {
     displayValue = [];
-    display.textContent = 0
+    display.textContent = 0;
+    result = 0;
+    a = undefined;
+    b = undefined;
   })
 }
 
 function operator() {
   let operator = document.querySelectorAll('.operator')
   operator.forEach((op) => op.addEventListener('click', function() {
-    a = parseFloat(displayValue.join(''));
-    console.log(a);
-    displayValue = [];
-    mathSign = this.textContent;
+    if (a == undefined) {
+      a = parseFloat(displayValue.join(''));
+      console.log(`a:  ${a}`);
+      displayValue = [];
+      mathSign = this.textContent;
+    } else {
+      b = parseFloat(displayValue.join(''));
+      console.log(`b: ${b}`)
+      displayValue = [];
+      result = operate(a, b, mathSign);
+      display.textContent = result;
+      a = result;
+      mathSign = this.textContent;
+    }
   }))
 }
 
@@ -70,10 +84,8 @@ function equals() {
   let equal = document.querySelector('.equal')
   equal.addEventListener('click', function() {
     b = parseFloat(displayValue.join(''));
-    console.log(mathSign);
-    console.log(b)
-    let ans = operate(a, b, mathSign)
-    display.textContent = ans
+    result = operate(a, b, mathSign)
+    display.textContent = result
   })
 }
 
