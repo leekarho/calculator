@@ -7,5 +7,43 @@ body {
 
 .display {
     border-style: solid;
-    min-height: 20px;
+    min-height: 25px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: bisque;
+    padding: 2px;
+}
+
+.num, 
+.operator, 
+.equal, 
+#reset {
+  width: 30px;
+  height: 30px;
+}
+
+.zero,
+#reset {
+  width: 64px;
+}
+
+.row-one,
+.row-two,
+.row-three,
+.row-four {
+  padding: 2px;
+}
+
+.row-zero {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px;
+  padding-top: 4px;
+}
+
+#container {
+  border-style: solid;
+  padding: 4px;
+  background-color: aqua;
 }
