@@ -24,16 +24,12 @@ function divide(a, b) {
 function operate(a, b, operator) {
     switch (operator) {
       case '+':
-        console.log(add(a, b));
         return add(a, b);
       case '-':
-        console.log(subtract(a, b));
         return subtract(a, b);
       case '*':
-        console.log(multiply(a, b));
         return multiply(a, b);
       case '/':
-        console.log(divide(a, b));
         return divide(a, b);
     }
 }
@@ -77,6 +73,7 @@ function equals() {
       result = operate(a, b, mathSign)
       display.textContent = result
       a = result;
+      displayValue = [0]
     }
   })
 }
