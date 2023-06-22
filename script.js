@@ -76,9 +76,7 @@ function equals() {
       b = parseFloat(displayValue.join(''));
       result = operate(a, b, mathSign)
       display.textContent = result
-      a = undefined;
-      b = undefined;
-      displayValue = [0];
+      a = result;
     }
   })
 }
