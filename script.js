@@ -2,7 +2,7 @@ let a;
 let b;
 let result = 0;
 let mathSign = '';
-let displayValue = [];
+let displayValue = [0];
 let display = document.querySelector('.display');
 
 function add(a, b) {
@@ -41,24 +41,12 @@ function operate(a, b, operator) {
 function calcDisplay() {
   let btn = document.querySelectorAll('.num');
   btn.forEach((number) => number.addEventListener('click', function() {
-    displayValue = [];
     displayValue.push(this.textContent);
-    display.textContent = displayValue.join('');
+    display.textContent = parseFloat(displayValue.join(''));
   }));
   reset();
   operator();
   equals();
-}
-
-function reset() {
-  let reset = document.querySelector('#reset')
-  reset.addEventListener('click', function() {
-    displayValue = [];
-    display.textContent = 0;
-    result = 0;
-    a = undefined;
-    b = undefined;
-  })
 }
 
 function operator() {
@@ -66,11 +54,11 @@ function operator() {
   operator.forEach((op) => op.addEventListener('click', function() {
     if (a == undefined) {
       a = parseFloat(displayValue.join(''));
-      displayValue = [];
+      displayValue = [0];
       mathSign = this.textContent;
     } else {
       b = parseFloat(displayValue.join(''));
-      displayValue = [];
+      displayValue = [0];
       result = operate(a, b, mathSign);
       display.textContent = result;
       a = result;
@@ -83,12 +71,26 @@ function equals() {
   let equal = document.querySelector('.equal')
   equal.addEventListener('click', function() {
     if (a == undefined) {
-      display.textContent = displayValue.join('')
+      display.textContent = parseFloat(displayValue.join(''))
     } else {
       b = parseFloat(displayValue.join(''));
       result = operate(a, b, mathSign)
       display.textContent = result
+      a = undefined;
+      b = undefined;
+      displayValue = [0];
     }
+  })
+}
+
+function reset() {
+  let reset = document.querySelector('#reset')
+  reset.addEventListener('click', function() {
+    displayValue = [0];
+    display.textContent = 0;
+    result = 0;
+    a = undefined;
+    b = undefined;
   })
 }
 
