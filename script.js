@@ -54,11 +54,15 @@ function operator() {
       mathSign = this.textContent;
     } else {
       b = parseFloat(displayValue.join(''));
-      displayValue = [0];
       result = operate(a, b, mathSign);
       display.textContent = result;
       a = result;
       mathSign = this.textContent;
+      displayValue = [0];
+      console.log(`a: ${a}`)
+      console.log(`b: ${b}`)
+      console.log(result)
+      console.log(mathSign)
     }
   }))
 }
@@ -73,7 +77,14 @@ function equals() {
       result = operate(a, b, mathSign)
       display.textContent = result
       a = result;
-      displayValue = [0]
+      if (mathSign == '*') {
+        displayValue = [1]
+      } else {
+        displayValue = [0]
+      }
+      console.log(`a: ${a}`)
+      console.log(`b: ${b}`)
+      console.log(mathSign)
     }
   })
 }
