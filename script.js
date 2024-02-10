@@ -34,7 +34,6 @@ function operator() {
   operator.forEach((op) =>
     op.addEventListener("click", function () {
       mathSign = this.textContent;
-      console.log(mathSign);
       if (a == undefined) {
         a = parseFloat(displayValue.join(""));
         displayValue = [0];
