@@ -3,47 +3,57 @@ body {
   align-items: center;
   justify-content: center;
   background-color: bisque;
+  height: 80vh;
 }
 
 .display {
-    border-style: solid;
-    min-height: 25px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: bisque;
-    padding: 2px;
+  border-style: solid;
+  min-height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
-.num, 
-.operator, 
-.equal, 
+.num,
+.operator,
+.equal,
 #reset {
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 20px;
 }
 
 .zero,
 #reset {
-  width: 64px;
+  width: 120px;
 }
 
+.row-zero,
 .row-one,
 .row-two,
 .row-three,
 .row-four {
-  padding: 2px;
-}
-
-.row-zero {
   display: flex;
   justify-content: space-between;
-  padding: 2px;
-  padding-top: 4px;
+  gap: 3px;
+  padding: 3px;
+  box-sizing: border-box;
 }
 
 #container {
   border-style: solid;
   padding: 4px;
-  background-color: aqua;
+  background-color: blue;
+  min-width: 250px;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
