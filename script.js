@@ -4,6 +4,7 @@ let result = 0;
 let mathSign = "";
 let displayValue = [0];
 let display = document.querySelector(".display");
+let lastOperator = null;
 
 function calcDisplay() {
   let btn = document.querySelectorAll(".num");
@@ -33,21 +34,21 @@ function operator() {
   let operator = document.querySelectorAll(".operator");
   operator.forEach((op) =>
     op.addEventListener("click", function () {
-      mathSign = this.textContent;
-      if (a == undefined) {
-        a = parseFloat(displayValue.join(""));
-        displayValue = [0];
-      } else {
-        if (mathSign === this.textContent) {
-          return;
+      if (lastOperator !== this.textContent) {
+        if (a == undefined) {
+          mathSign = this.textContent;
+          a = parseFloat(displayValue.join(""));
+          displayValue = [0];
+        } else {
+          b = parseFloat(displayValue.join(""));
+          result = operate(a, b, mathSign);
+          display.textContent = result;
+          a = result;
+          mathSign = this.textContent;
+          displayValue = [0];
         }
-
-        b = parseFloat(displayValue.join(""));
-        result = operate(a, b, mathSign);
-        display.textContent = result;
-        a = result;
-        displayValue = [0];
       }
+      lastOperator = this.textContent;
     })
   );
 }
